@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MoneyKeeper</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="img_wallet">
+        <item>wallet_cash</item>
+        <item>wallet_bank</item>
+        <item>wallet_creditcard</item>
+        <item>wallet_bitcoin</item>
+        <item>wallet_moneybox</item>
+        <item>wallet_pigbank</item>
+        <item>wallet_saving</item>
+        <item>wallet_boxmoney</item>
+        <item>wallet_accountant</item>
+        <item>wallet_ledger</item>
+    </string-array>
+</resources>

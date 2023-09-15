@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Trang chủ" />
+
+    <item
+        android:id="@+id/navExpense"
+        android:icon="@drawable/ic_thuchi"
+        android:title="Giao dịch" />
+    <item
+        android:id="@+id/holder"
+        android:title=""
+        android:enabled="false" />
+    <item
+        android:id="@+id/navStatistical"
+        android:icon="@drawable/ic_calendar"
+        android:title="Chart" />
+    <item
+        android:id="@+id/navSettings"
+        android:icon="@drawable/ic_setting"
+        android:title="Cài đặt" />
+
+</menu>
