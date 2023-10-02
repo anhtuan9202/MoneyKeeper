@@ -14,4 +14,42 @@
         <item>wallet_accountant</item>
         <item>wallet_ledger</item>
     </string-array>
+    <string-array name="img_cat">
+        <item>cat_calculator</item>
+        <item>cat_car</item>
+        <item>cat_cart</item>
+        <item>cat_clapboard</item>
+        <item>cat_clipboard</item>
+        <item>cat_die</item>
+        <item>cat_dolly</item>
+        <item>cat_document</item>
+        <item>cat_eye</item>
+        <item>cat_fashion</item>
+        <item>cat_filmreel</item>
+        <item>cat_gamecontroller</item>
+        <item>cat_gas</item>
+        <item>cat_global</item>
+        <item>cat_globe</item>
+        <item>cat_hazard</item>
+        <item>cat_heart</item>
+        <item>cat_hotair</item>
+        <item>cat_location</item>
+        <item>cat_money</item>
+        <item>cat_motorcycle</item>
+        <item>cat_phone</item>
+        <item>cat_shoeprints</item>
+        <item>cat_shop</item>
+        <item>cat_plugin</item>
+        <item>ic_restaurant</item>
+        <item>cat_pigbank</item>
+        <item>cat_beer</item>
+        <item>cat_clothes</item>
+        <item>cat_lipstick</item>
+        <item>cat_faucet</item>
+        <item>cat_moneybag</item>
+        <item>cat_creditcard</item>
+        <item>cat_wallet</item>
+        <item>cat_bitcoin</item>
+        <item>cat_hospital</item>
+    </string-array>
 </resources>

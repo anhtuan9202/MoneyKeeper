@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#03A9F4">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:layout_marginTop="24dp"
         android:id="@+id/tbWallet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,35 +13,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ImageView
-                android:id="@+id/iv_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:id="@+id/ivBack"
                 android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_before" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:text="Ví tiền
+"
                 android:textColor="@color/black"
-                android:text="Ví tiền"
-                android:textSize="24sp" />
+                android:textSize="20sp"
+                android:textStyle="bold" />
             <ImageView
                 android:id="@+id/ivAdd"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_add1"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_addicon"
+                />
         </RelativeLayout>
 
     </com.google.android.material.appbar.MaterialToolbar>
 
     <RelativeLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/llWallet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,6 +52,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvWallet"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

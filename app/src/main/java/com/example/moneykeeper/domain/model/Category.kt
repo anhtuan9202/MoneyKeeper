@@ -9,7 +9,7 @@ import com.example.moneykeeper.utils.Constants
 data class Category(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Constants.CATEGORY_ID)
-    var cateId: Int,
+    var cateId: Int = 0,
     @ColumnInfo(name = Constants.CATEGORY_NAME)
     val cateName: String,
     @ColumnInfo(name = Constants.CATEGORY_IMAGE)

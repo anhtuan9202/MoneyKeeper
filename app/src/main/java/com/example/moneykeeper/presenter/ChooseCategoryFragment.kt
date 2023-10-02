@@ -4,9 +4,7 @@ package com.example.moneykeeper.presenter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moneykeeper.R
 import com.example.moneykeeper.databinding.FragmentChooseCategoryBinding
@@ -23,7 +21,7 @@ class ChooseCategoryFragment : BaseBottomSheetFragment<FragmentChooseCategoryBin
     @Inject
     lateinit var categoryAdapter: CategoryAdapter
 
-    private val categoryViewModel: CategoryViewModel by viewModels()
+    private val categoryViewModel: CategoryViewModel by activityViewModels()
     private lateinit var listener: ChooseCategoryListener
 
     fun setDialogFragmentListener(listener: ChooseCategoryListener) {
@@ -48,6 +46,9 @@ class ChooseCategoryFragment : BaseBottomSheetFragment<FragmentChooseCategoryBin
             }
             fragment.arguments = args
             return fragment
+        }
+        fun newInstance(): ChooseCategoryFragment {
+            return ChooseCategoryFragment()
         }
     }
 
@@ -81,8 +82,8 @@ class ChooseCategoryFragment : BaseBottomSheetFragment<FragmentChooseCategoryBin
         categoryAdapter.setItemClickListener(object : com.example.moneykeeper.presenter.interfaces.OnItemClickListener {
             override fun onItemClick(data: Any?) {
                 if(data == "add"){
-                    val addWalletFragment = AddWalletFragment().newInstance()
-                    addWalletFragment.show(requireActivity().supportFragmentManager, "Add Wallet")
+                    callback.showFragment(this::class.java,AddCategoryFragment::class.java,0,0,null,true)
+                    dismiss()
                 }
                 else {
                     val category = data as Category
@@ -112,7 +113,6 @@ class ChooseCategoryFragment : BaseBottomSheetFragment<FragmentChooseCategoryBin
             }
             data.add("add")
             categoryAdapter.submitList(data)
-            notify(it.size.toString())
         }
     }
 
@@ -124,7 +124,6 @@ class ChooseCategoryFragment : BaseBottomSheetFragment<FragmentChooseCategoryBin
             }
             data.add("add")
             categoryAdapter.submitList(data)
-            notify(it.size.toString())
 
         }
     }

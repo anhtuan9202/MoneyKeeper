@@ -15,9 +15,9 @@
         android:title=""
         android:enabled="false" />
     <item
-        android:id="@+id/navStatistical"
+        android:id="@+id/navBudget"
         android:icon="@drawable/ic_calendar"
-        android:title="Chart" />
+        android:title="Ngân sách" />
     <item
         android:id="@+id/navSettings"
         android:icon="@drawable/ic_setting"

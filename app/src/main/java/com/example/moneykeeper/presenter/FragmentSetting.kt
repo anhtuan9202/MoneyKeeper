@@ -15,7 +15,7 @@ class FragmentSetting : BaseFragment<FragmentSettingBinding>() {
     }
 
     override fun initViews() {
-
+        callback.showFragment(this::class.java, CategoryFragment::class.java,0,0,null)
     }
 
 }

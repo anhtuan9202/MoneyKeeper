@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_radius"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/ivCategory"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:src="@drawable/cat_clipboard" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_toRightOf="@id/ivCategory"
+            android:maxLines="1"
+            android:text="Tên danh mục" />
+
+        <TextView
+            android:id="@+id/tvMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvCategory"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/ivCategory"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:text="09/2023" />
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="1,000,000"
+            android:textSize="13sp" />
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_alignStart="@id/tvMonth"
+            android:id="@+id/pbBudget"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:indicatorColor="@color/progressIndicatorIndicatorColor"
+            app:trackColor="@color/progressIndicatorTrackColor"
+            android:layout_below="@id/tvMonth"/>
+        <TextView
+            android:id="@+id/tvPbMoney"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/pbBudget"
+            android:layout_alignStart="@id/tvMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0VND"/>
+        <TextView
+            android:id="@+id/tvPbPercent"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/pbBudget"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0%"/>
+        <TextView
+            android:id="@+id/tvPbBudget"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/pbBudget"
+            android:layout_alignStart="@id/tvMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0VND"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

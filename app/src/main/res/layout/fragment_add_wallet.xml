@@ -1,27 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvAddWallet"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_marginTop="24dp"
+        android:id="@+id/tbCategory"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/background_edittext"
-        android:gravity="center"
-        android:text="Thêm ví tiền"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm ví tiền"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilWalletName"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_category"
+                android:layout_marginEnd="25dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etWalletName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Tên ví tiền"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilWalletMoney"
+                app:layout_constraintTop_toBottomOf="@id/tilWalletName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_money"
+                android:layout_marginEnd="25dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etWalletMoney"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:inputType="number"
+                    android:hint="Số tiền ban đầu"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tilWalletMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:text="Chọn biểu tượng"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvAddWallet"
-        android:layout_margin="15dp"
-        android:background="@drawable/background_edittext"
+        android:layout_above="@+id/btnSave"
+        android:layout_below="@id/tbCategory"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:padding="15dp">
 
         <ImageView
@@ -41,7 +106,7 @@
             android:text="Chọn hình" />
 
         <net.cachapa.expandablelayout.ExpandableLayout
-            android:id="@+id/elChooseImage"
+            android:id="@+id/elWallet"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_below="@id/tvChooseImage"
@@ -49,85 +114,31 @@
             app:el_expanded="false">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvWalletImage"
+                android:id="@+id/rvWallet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/background_edittext"
                 android:padding="15dp" />
         </net.cachapa.expandablelayout.ExpandableLayout>
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tvWalletName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/elChooseImage"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/background_edittext"
-            android:drawableStart="@drawable/ic_pen"
-            android:drawablePadding="15dp"
-            android:hint="Tên ví tiền"
-            android:inputType="textCapSentences"
-            android:maxLines="1"
-            android:paddingStart="15dp" />
-
-        <RelativeLayout
-            android:id="@+id/rlMoney"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvWalletName">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tvMoney"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/background_edittext"
-                android:drawableStart="@drawable/ic_coin"
-                android:drawablePadding="15dp"
-                android:hint="Số tiền ban đầu"
-                android:inputType="numberDecimal"
-                android:maxLength="12"
-                android:maxLines="1"
-                android:paddingStart="15dp" />
-
-            <TextView
-                android:id="@+id/tvMoneyType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:text="VNĐ" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rlMoney"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCancel"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/button_cancel"
-                android:text="Hủy bỏ"
-                android:textAllCaps="false" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/button_success"
-                android:text="Lưu"
-                android:textAllCaps="false" />
-        </LinearLayout>
     </RelativeLayout>
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:layout_below="@id/tbCategory"-->
+<!--        android:layout_above="@+id/btnSave"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:id="@+id/rvWallet"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:listitem="@layout/item_category"/>-->
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnSave"
+        android:layout_alignParentBottom="true"
+        android:text="Lưu"
+        android:layout_marginStart="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>

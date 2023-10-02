@@ -23,5 +23,17 @@ class CategoryRepositoryImpl @Inject constructor(private val dao: CategoryDao) :
         return dao.getRevenues()
     }
 
+    override suspend fun insert(category: Category) {
+        return dao.insert(category)
+    }
+
+    override suspend fun update(category: Category) {
+        return
+    }
+
+    override suspend fun delete(category: Category) {
+        return dao.delete(category)
+    }
+
 
 }

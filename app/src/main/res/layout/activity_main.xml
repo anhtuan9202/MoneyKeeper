@@ -7,20 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <com.google.android.material.appbar.MaterialToolbar-->
-<!--            android:id="@+id/toolBar"-->
-<!--            app:title="test"-->
-<!--            app:navigationIcon="@drawable/ic_add1"-->
-<!--            app:menu="@menu/toolbar_menu"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            />-->
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
     <FrameLayout
-        android:layout_marginBottom="80dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frMain"/>
@@ -30,9 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottomAppBar"
         android:layout_gravity="bottom"
-        android:background="@color/white"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp">
+        android:background="@color/white">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="wrap_content"

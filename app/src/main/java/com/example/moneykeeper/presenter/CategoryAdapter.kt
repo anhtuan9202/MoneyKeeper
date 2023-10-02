@@ -8,39 +8,61 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moneykeeper.R
 import com.example.moneykeeper.databinding.ItemAddBinding
 import com.example.moneykeeper.databinding.ItemCategoryBinding
 import com.example.moneykeeper.domain.model.Category
+import com.example.moneykeeper.presenter.interfaces.OnDeleteClickListener
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
-import com.example.moneykeeper.utils.ResourceUtils
 import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
 
 
 class CategoryAdapter(private val context: Context) :
     ListAdapter<Any, RecyclerView.ViewHolder>(DiffCallback()) {
+    var showTrashIcon = false
 
     private var itemClickListener: OnItemClickListener? = null
+    private var deleteClickListener: OnDeleteClickListener? = null
 
     companion object {
         private const val VIEW_TYPE_CATEGORY = 0
         private const val VIEW_TYPE_ADD = 1
     }
 
+    fun showTrashIcon(show: Boolean) {
+        showTrashIcon = show
+        notifyDataSetChanged()
+
+    }
+
     fun setItemClickListener(listener: OnItemClickListener) {
         itemClickListener = listener
+    }
+    fun setDeleteClickListener(listener: OnDeleteClickListener){
+        deleteClickListener = listener
     }
 
     inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(category: Category) {
+            if(showTrashIcon){
+                binding.ivDelete.visibility = View.VISIBLE
+
+            }
+            else {
+                binding.ivDelete.visibility = View.GONE
+
+            }
+
             binding.ivCategoryImageItem.setImageResource(
                 context.getDrawableResourceId(category.cateImage))
             binding.tvCategoryNameItem.text = category.cateName
 
             binding.root.setOnClickListener {
                 itemClickListener?.onItemClick(category)
+            }
+            binding.ivDelete.setOnClickListener {
+                deleteClickListener?.onDeleteClick(category)
             }
         }
     }
@@ -52,6 +74,8 @@ class CategoryAdapter(private val context: Context) :
             }
         }
     }
+
+
 
     override fun getItemViewType(position: Int): Int {
         val item = getItem(position)

@@ -2,10 +2,12 @@ package com.example.moneykeeper
 
 
 import com.example.moneykeeper.databinding.ActivityMainBinding
-import com.example.moneykeeper.presenter.AddExpenseFragment
+import com.example.moneykeeper.presenter.expense.view.AddExpenseFragment
+import com.example.moneykeeper.presenter.budget.view.BudgetFragment
 import com.example.moneykeeper.presenter.FragmentHome
 import com.example.moneykeeper.presenter.FragmentSetting
 import com.example.moneykeeper.presenter.base.BaseActivity
+import com.example.moneykeeper.presenter.expense.view.ExpensesFragment
 import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +28,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 R.id.navSettings -> {
                     showFragment(this::class.java, FragmentSetting::class.java,0,0,null, true )
                 }
+                R.id.navBudget -> {
+                    showFragment(this::class.java, BudgetFragment::class.java,0,0,null, true )
+
+                }
             }
             true
         })
@@ -35,8 +41,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
 
+
     }
 
     override fun getLayout(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+
 
 }

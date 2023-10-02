@@ -1,40 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_edittext"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tvTitle"
-        android:textSize="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tất cả các giao dịch "/>
-    <ImageButton
-        android:layout_toLeftOf="@+id/ivFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_search"/>
-    <ImageButton
-        android:layout_alignParentEnd="true"
-        android:id="@+id/ivFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_list"/>
-
-
-
-    <LinearLayout
-        android:id="@+id/lnMonth"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tbExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"/>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giao dịch trong ngày"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:id="@+id/ivFilter"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_list"
+                />
+        </RelativeLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+    <LinearLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/lnMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/tvTitle"
+        android:padding="10dp"
+        android:background="@drawable/background_radius"
+        app:layout_constraintTop_toBottomOf="@id/tbExpense"
         android:gravity="center">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnPrev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_previous" />
+            android:src="@drawable/ic_arrow_prev" />
 
         <TextView
             android:id="@+id/tvMonth"
@@ -44,96 +66,66 @@
             android:textSize="18sp"
             android:layout_marginHorizontal="16dp" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_media_next" />
+            android:src="@drawable/ic_arrow_next" />
 
     </LinearLayout>
-
-    <ScrollView
+    <LinearLayout
+        android:id="@+id/lnChart"
         android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/lnMonth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@id/lnMonth"
-        android:layout_above="@id/llThongKe">
+        android:orientation="vertical">
 
-
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/llBarChartChiTieu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-
-                android:id="@+id/llBarChartChiTieu"
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bcExpense"
                 android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:id="@+id/tvExpenseChart"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/background_edittext"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:text="Biểu đồ thống kê chi tiêu trong ngày"
+                android:textColor="@color/black" />
 
+        </LinearLayout>
 
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/bcExpense"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
-                <TextView
-                    android:id="@+id/tvExpenseChart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="5dp"
-                    android:text="Biểu đồ thống kê chi tiêu trong ngày"
-                    android:textColor="@color/black" />
+        <LinearLayout
+            android:id="@+id/llBarChartRvenue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llBarChartThuNhap"
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/bcRevenue"
                 android:layout_width="match_parent"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:id="@+id/tvRevenueChart"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/llBarChartChiTieu"
-                android:layout_margin="5dp"
-                android:background="@drawable/background_edittext"
-                android:orientation="vertical">
+                android:layout_gravity="center_horizontal"
+                android:text="Biểu đồ thống kê thu nhập trong ngày"
+                android:textColor="@color/black" />
 
-
-
-                <com.github.mikephil.charting.charts.BarChart
-                    android:id="@+id/bcRevenue"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
-
-                <TextView
-                    android:id="@+id/tvRevenueChart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="5dp"
-                    android:text="Biểu đồ thống kê thu nhập trong ngày"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                
-                android:id="@+id/rvExpense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/llBarChartThuNhap"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                />
-
-        </RelativeLayout>
-    </ScrollView>
-
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
-        android:id="@+id/llThongKe"
+        app:layout_constraintTop_toBottomOf="@id/lnChart"
+        android:id="@+id/llStatistical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -141,6 +133,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/background_radius"
+        android:padding="5dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -192,4 +186,14 @@
             android:text="2,000,000 VNĐ"
             android:textStyle="bold|italic" />
     </LinearLayout>
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExpense"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/llStatistical"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ object Constants {
     const val CATEGORY = "tb_category"
     const val MONEY_TYPE = "tb_moneyType"
     const val WALLET = "tb_wallet"
+    const val BUDGET = "tb_budget"
 
     //cate
     const val CATEGORY_ID = "cate_id"
@@ -30,6 +31,12 @@ object Constants {
     const val WALLET_NAME = "wal_name"
     const val WALLET_IMAGE = "wal_image"
     const val WALLET_MONEY = "wal_money"
+
+    //budget
+    const val BUDGET_ID = "bud_id"
+    const val BUDGET_CATEGORY = "bud_category"
+    const val BUDGET_MONEY = "bud_money"
+    const val BUDGET_MONTH = "bud_month"
 
 
 

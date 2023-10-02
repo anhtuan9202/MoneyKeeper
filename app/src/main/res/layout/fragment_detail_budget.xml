@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_edittext"
+    tools:context=".presenter.budget.view.BudgetFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tbBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_alignParentStart="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chi tiết ngân sách"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.cardview.widget.CardView
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/cardView"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/tbBudget"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/ivCategory"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:src="@drawable/cat_clipboard" />
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_toRightOf="@id/ivCategory"
+                android:maxLines="1"
+                android:text="Tên danh mục" />
+
+            <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCategory"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@id/ivCategory"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:text="09/2023" />
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="1,000,000"
+                android:textSize="13sp" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:layout_alignStart="@id/tvMonth"
+                android:id="@+id/pbBudget"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:indicatorColor="@color/progressIndicatorIndicatorColor"
+                app:trackColor="@color/progressIndicatorTrackColor"
+                android:layout_below="@id/tvMonth"/>
+            <TextView
+                android:id="@+id/tvPbMoney"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/pbBudget"
+                android:layout_alignStart="@id/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0VND"/>
+            <TextView
+                android:id="@+id/tvPbPercent"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/pbBudget"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0%"/>
+            <TextView
+                android:id="@+id/tvPbBudget"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/pbBudget"
+                android:layout_alignStart="@id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0VND"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh sách giao dịch"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:id="@+id/rvExpense"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_budget"
+        app:layout_constraintBottom_toTopOf="@id/layoutButton"
+        />
+
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/layoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Xóa"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

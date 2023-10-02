@@ -4,14 +4,13 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import javax.inject.Inject
 
-class NumberFormatter @Inject constructor() {
-    private val formatter: DecimalFormat = NumberFormat.getInstance() as DecimalFormat
+object NumberFormatter {
 
-    init {
-        formatter.applyPattern("#,###,###,###")
-    }
+
 
     fun formatNumber(string: String): String {
+        val formatter: DecimalFormat = NumberFormat.getInstance() as DecimalFormat
+        formatter.applyPattern("#,###,###,###")
         val number = string.toLongOrNull() ?: 0
         return formatter.format(number)
     }

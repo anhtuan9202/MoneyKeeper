@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moneykeeper.domain.model.Category
+import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.domain.use_cases.category.CategoryUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -44,6 +45,17 @@ class CategoryViewModel @Inject  constructor(
             categoryUseCases.getCategoryById(id)
         }
     }
+    fun insertCategory(category: Category){
+        viewModelScope.launch(Dispatchers.IO) {
+           categoryUseCases.insertCategory(category)
+        }
+    }
+    fun deleteCategory(category: Category){
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryUseCases.deleteCategory(category)
+        }
+    }
+
 
 
 

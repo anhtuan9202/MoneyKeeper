@@ -1,18 +1,19 @@
 package com.example.moneykeeper.presenter
 
-import android.content.Intent
 import android.icu.util.Calendar
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moneykeeper.R
 import com.example.moneykeeper.databinding.FragmentHomeBinding
 import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.presenter.base.BaseFragment
+import com.example.moneykeeper.presenter.expense.adapter.ExpenseAdapter
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
-import com.example.moneykeeper.presenter.viewmodel.ExpenseViewModel
-import com.example.moneykeeper.presenter.viewmodel.WalletViewModel
+import com.example.moneykeeper.presenter.expense.viewmodel.ExpenseViewModel
+import com.example.moneykeeper.presenter.wallet.viewmodel.WalletViewModel
+import com.example.moneykeeper.presenter.wallet.adapter.WalletAdapter
+import com.example.moneykeeper.presenter.wallet.view.WalletFragment
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -27,8 +28,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FragmentHome : BaseFragment<FragmentHomeBinding>() {
 
-    private val expenseViewModel: ExpenseViewModel by viewModels()
-    private val walletViewModel: WalletViewModel by viewModels()
+    private val expenseViewModel: ExpenseViewModel by activityViewModels()
+    private val walletViewModel: WalletViewModel by activityViewModels()
 
 
     @Inject

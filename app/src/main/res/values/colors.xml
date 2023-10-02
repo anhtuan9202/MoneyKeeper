@@ -7,7 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="transparent">#00FFCC00</color>
+<!--    <color name="transparent">#00FFC00</color>-->
     <color name="bnv_background">#FAFAFA</color>
     <color name="color_icon">#CDCDCD</color>
     <color name="color_icon_checked">#3F8AE0</color>
@@ -15,4 +16,7 @@
     <color name="button_uncheck">#FFFFFF</color>
     <color name="button_success">#4986CC</color>
     <color name="button_cancel">#E64646</color>
+    <color name="progressIndicatorTrackColor">@color/black</color>
+    <color name="progressIndicatorIndicatorColor">@color/button_cancel</color>
+
 </resources>
