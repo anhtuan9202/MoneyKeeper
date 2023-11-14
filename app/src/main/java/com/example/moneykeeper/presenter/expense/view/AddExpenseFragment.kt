@@ -4,24 +4,30 @@ import android.app.DatePickerDialog
 import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import com.example.moneykeeper.R
 import com.example.moneykeeper.databinding.FragmentAddExpenseBinding
 import com.example.moneykeeper.domain.model.Category
 import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.domain.model.Wallet
-import com.example.moneykeeper.presenter.ChooseCategoryFragment
+import com.example.moneykeeper.presenter.category.view.ChooseCategoryFragment
 import com.example.moneykeeper.presenter.base.BaseFragment
 import com.example.moneykeeper.presenter.interfaces.ChooseCategoryListener
 import com.example.moneykeeper.presenter.interfaces.ChooseWalletListener
-import com.example.moneykeeper.presenter.viewmodel.CategoryViewModel
+import com.example.moneykeeper.presenter.category.viewmodel.CategoryViewModel
 import com.example.moneykeeper.presenter.expense.viewmodel.ExpenseViewModel
 import com.example.moneykeeper.presenter.wallet.view.ChooseWalletFragment
 import com.example.moneykeeper.presenter.wallet.viewmodel.WalletViewModel
-import com.example.moneykeeper.utils.DateUtils
-import com.example.moneykeeper.utils.NumberFormatter
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.DateUtils
+import com.example.moneykeeper.presenter.utils.NumberFormatter
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.TextChanged
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -73,6 +79,10 @@ class AddExpenseFragment : BaseFragment<FragmentAddExpenseBinding>() {
         binding.btnSave.setOnClickListener {
             saveExpense()
         }
+        binding.ivBack.setOnClickListener {
+            callback.backToPrevious()
+        }
+        binding.tvMoney.addTextChangedListener(TextChanged.onTextChangedListener(binding.tvMoney))
 
 
     }
@@ -104,7 +114,7 @@ class AddExpenseFragment : BaseFragment<FragmentAddExpenseBinding>() {
             categoryViewModel.getCategories()
 
             categoryViewModel.categoriesLiveData.observe(this){
-                category = it[0]
+                category = it[7]
                 showCategoryInfomation(category)
 //                showChooseCategory(category)
             }
@@ -131,9 +141,9 @@ class AddExpenseFragment : BaseFragment<FragmentAddExpenseBinding>() {
 
     private fun saveExpense() {
         expenseNote = binding.etExpenseNote.text.toString()
-        expenseMoney = binding.tvMoney.text.toString()
+        expenseMoney = binding.tvMoney.text.toString().replace(",", "")
         if (TextUtils.isEmpty(expenseMoney)) {
-            binding.tvMoney.error = "Số tiền không được để trống!"
+            binding.tvMoney.error = getString(R.string.money_blank)
             return
         }
         val expense = Expense(
@@ -175,20 +185,20 @@ class AddExpenseFragment : BaseFragment<FragmentAddExpenseBinding>() {
         binding.ivCategoryImage.setImageResource(requireContext().getDrawableResourceId(category.cateImage))
         binding.tvCategoryName.text = category.cateName
         if (category.cateType == 1) {
-            binding.tvCategoryType.text = "Khoản thu"
+            binding.tvCategoryType.text = getString(R.string.revenue)
             binding.tvMoney.setHintTextColor(resources.getColor(R.color.button_success))
             binding.tvMoney.setTextColor(resources.getColor(R.color.button_success))
-            binding.tvTitle.text = "Thêm khoản thu"
+            binding.tvTitle.text = getString(R.string.add_revenue)
             if (isEdit) {
-                binding.tvTitle.text = "Sửa khoản thu"
+                binding.tvTitle.text = getString(R.string.update_reve)
             }
         } else {
-            binding.tvCategoryType.text = "Khoản chi"
+            binding.tvCategoryType.text = getString(R.string.expense)
             binding.tvMoney.setHintTextColor(resources.getColor(R.color.button_cancel))
-            binding.tvCategoryName.setTextColor(resources.getColor(R.color.button_cancel))
-            binding.tvTitle.text = "Thêm khoản chi"
+//            binding.tvCategoryName.setTextColor(resources.getColor(R.color.button_cancel))
+            binding.tvTitle.text = getString(R.string.add_expense)
             if (isEdit) {
-                binding.tvTitle.text = "Sửa khoản chi"
+                binding.tvTitle.text = getString(R.string.update_expense)
             }
         }
         expenseCategory = category.cateId
@@ -249,8 +259,9 @@ class AddExpenseFragment : BaseFragment<FragmentAddExpenseBinding>() {
 
     override fun onResume() {
         super.onResume()
-        activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)?.visibility = View.INVISIBLE
-        activity?.findViewById<FloatingActionButton>(R.id.fAB)?.visibility = View.INVISIBLE
+        activity?.findViewById<ConstraintLayout>(R.id.clayout)?.visibility = View.INVISIBLE
+        activity?.findViewById<AdView>(R.id.adView)?.visibility = View.INVISIBLE
+
     }
 
 

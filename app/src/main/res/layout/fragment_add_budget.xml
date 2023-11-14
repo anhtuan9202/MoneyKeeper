@@ -4,17 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background_edittext"
     tools:context=".presenter.budget.view.AddBudgetFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="24dp"
         android:id="@+id/tbBudget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@drawable/background_toolbar">
         <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -27,10 +27,10 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tạo ngân sách"
+                android:text="@string/add_budget_title"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="?attr/text_color"
                 android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
@@ -54,15 +54,16 @@
                 android:id="@+id/etBudgetMoney"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:hint="Số tiền:"/>
+                android:background="@drawable/background_edittext"
+                android:inputType="number"
+                android:hint="@string/add_budget_money"/>
         </com.google.android.material.textfield.TextInputLayout>
         <RelativeLayout
             android:id="@+id/rlBudget"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
-            android:background="@color/white"
+            android:background="@drawable/background_edittext"
             android:gravity="center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp">
@@ -79,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/ivCategoryImage"
-                android:text="Chi cho"
+                android:text="@string/add_budget_expe_for"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -90,14 +91,14 @@
                 android:layout_below="@id/tv"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@id/ivCategoryImage"
-                android:text="Tên danh mục" />
+                android:text="@string/add_trans_category_name" />
         </RelativeLayout>
         <TextView
             android:layout_marginTop="20dp"
             android:id="@+id/tvBudgetDate"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/white"
+            android:background="@drawable/background_edittext"
             android:drawableStart="@drawable/ic_calendar"
             android:drawablePadding="15dp"
             android:gravity="center_vertical"
@@ -115,9 +116,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/btnSave"
+        android:textColor="?attr/text_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lưu"/>
+        android:text="@string/save"/>
 
 
 

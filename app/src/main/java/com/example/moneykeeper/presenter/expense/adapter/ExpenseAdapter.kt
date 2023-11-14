@@ -14,11 +14,12 @@ import com.example.moneykeeper.databinding.ItemExpenseBinding
 
 import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
-import com.example.moneykeeper.presenter.viewmodel.CategoryViewModel
+import com.example.moneykeeper.presenter.category.viewmodel.CategoryViewModel
 import com.example.moneykeeper.presenter.wallet.viewmodel.WalletViewModel
-import com.example.moneykeeper.utils.DateUtils
+import com.example.moneykeeper.presenter.utils.DateUtils
+import com.example.moneykeeper.presenter.utils.NumberFormatter
 
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -37,7 +38,7 @@ class ExpenseAdapter @Inject constructor(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(expense: Expense) {
             binding.tvNote.text = expense.expNote
-            binding.tvMoney.text = expense.expMoney
+            binding.tvMoney.text = NumberFormatter.formatNumber(expense.expMoney)
             CoroutineScope(Dispatchers.IO).launch {
                 val category = categoryViewModel.getCategoryById(expense.expCategory)
 

@@ -2,16 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/background_color">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:layout_marginTop="24dp"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/tbExpense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@drawable/background_toolbar">
         <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -24,19 +26,18 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tất cả giao dịch"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="?attr/text_color"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
     <ScrollView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tbExpense"
-        android:background="@drawable/background_radius">
+        android:layout_below="@id/tbExpense">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                     android:paddingEnd="15dp"
                     android:textColor="@color/button_cancel"
                     android:textColorHint="@color/button_cancel"
-                    android:hint="Số tiền"
+                    android:hint="@string/add_transaction_money"
                     android:textSize="25sp" />
 
                 <TextView
@@ -98,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/ivWallet"
-                    android:text="Ví tiền"
+                    android:text="@string/add_transaction_wallet"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -141,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/ivCategoryImage"
-                    android:text="Tên danh mục"
+                    android:text="@string/add_trans_category_name"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -152,7 +153,7 @@
                     android:layout_below="@id/tvCategoryName"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/ivCategoryImage"
-                    android:text="Loại danh mục" />
+                    android:text="@string/add_trans_category_type" />
             </RelativeLayout>
 
             <EditText
@@ -161,9 +162,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/background_edittext"
-                android:drawableStart="@drawable/ic_note"
+                android:drawableStart="@drawable/ic_note_icon"
                 android:drawablePadding="15dp"
-                android:hint="Ghi chú"
+                android:hint="@string/add_trans_note"
                 android:padding="15dp"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp" />
@@ -173,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/background_edittext"
-                android:drawableStart="@drawable/ic_calendar"
+                android:drawableStart="@drawable/ic_calendar1"
                 android:drawablePadding="15dp"
                 android:gravity="center_vertical"
                 android:paddingStart="15dp"
@@ -190,6 +191,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:backgroundTint="@color/button_success"
-        android:text="Lưu"
+        android:text="@string/save"
+        android:textColor="?attr/text_color"
         android:textAllCaps="false" />
 </RelativeLayout>

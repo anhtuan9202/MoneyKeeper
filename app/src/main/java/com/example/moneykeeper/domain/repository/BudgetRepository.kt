@@ -7,6 +7,7 @@ import java.util.Date
 
 interface BudgetRepository {
     fun getBudgets(): Flow<List<Budget>>
+    fun get5Budget(): Flow<List<Budget>>
     fun getBudgetsForYearAndMonth(monthYear: String): Flow<List<Budget>>
     suspend fun insert(budget: Budget)
     suspend fun update(budget: Budget)

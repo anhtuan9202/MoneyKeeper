@@ -10,8 +10,9 @@ import com.example.moneykeeper.databinding.ItemWalletBinding
 
 import com.example.moneykeeper.domain.model.Wallet
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
+import com.example.moneykeeper.presenter.utils.NumberFormatter
 
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
 import javax.inject.Inject
 
 class WalletAdapter @Inject constructor(
@@ -27,7 +28,7 @@ class WalletAdapter @Inject constructor(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(wallet: Wallet) {
             binding.ivWalletImage.setImageResource(context.getDrawableResourceId(wallet.walImage))
-            binding.tvItemWalletMoney.text = wallet.walMoney
+            binding.tvItemWalletMoney.text = NumberFormatter.formatNumber(wallet.walMoney)
             binding.tvItemWalletName.text = wallet.walName
 
             binding.root.setOnClickListener {

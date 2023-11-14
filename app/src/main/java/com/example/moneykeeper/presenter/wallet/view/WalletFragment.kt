@@ -1,7 +1,9 @@
 package com.example.moneykeeper.presenter.wallet.view
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moneykeeper.R
@@ -74,9 +76,9 @@ class WalletFragment() : BaseFragment<FragmentWalletBinding>() {
                 }
 
                 bottomSheetDialog.dismiss()
-                notify("Xóa thành công")
+                notify(getString(R.string.delet_suc))
             } else {
-                notify("Phải có ít nhất một ví tiền")
+                notify(getString(R.string.wal_blank))
             }
         }
         val btnUpdate = bottomSheetDialog.findViewById<Button>(R.id.btnUpdate)
@@ -85,5 +87,7 @@ class WalletFragment() : BaseFragment<FragmentWalletBinding>() {
             bottomSheetDialog.dismiss()
         }
     }
+
+
 
 }

@@ -16,4 +16,6 @@ interface ExpenseRepository {
     suspend fun update(expense: Expense)
     suspend fun delete(expense: Expense)
 
+    fun exportExcel()
+
 }

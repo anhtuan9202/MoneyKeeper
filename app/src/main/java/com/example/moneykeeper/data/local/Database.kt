@@ -8,7 +8,7 @@ import com.example.moneykeeper.domain.model.Category
 import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.domain.model.MoneyType
 import com.example.moneykeeper.domain.model.Wallet
-import com.example.moneykeeper.utils.Converter
+import com.example.moneykeeper.presenter.utils.Converter
 
 @Database(
     entities = [Category::class, Expense::class, MoneyType::class, Wallet::class, Budget::class],
@@ -23,6 +23,6 @@ abstract class Database: RoomDatabase() {
     abstract val budgetDao: BudgetDao
 
     companion object{
-        const val DATABASE_NAME = "MoneyKeeperDB.db"
+        const val DATABASE_NAME = "MoneyKeeperDB1.db"
     }
 }

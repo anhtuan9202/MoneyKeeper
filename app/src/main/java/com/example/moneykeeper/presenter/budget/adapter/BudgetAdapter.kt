@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moneykeeper.databinding.ItemBudgetBinding
 import com.example.moneykeeper.domain.model.Budget
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
-import com.example.moneykeeper.presenter.viewmodel.CategoryViewModel
+import com.example.moneykeeper.presenter.category.viewmodel.CategoryViewModel
 import com.example.moneykeeper.presenter.expense.viewmodel.ExpenseViewModel
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.NumberFormatter
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -39,14 +40,15 @@ class BudgetAdapter @Inject constructor(
             val dateFormat = SimpleDateFormat("MM/yyyy",Locale.US)
             val formattedDate = dateFormat.format(budget.budMonth)
             binding.tvMonth.text = formattedDate
-            binding.tvMoney.text = budget.budMoney
-            binding.tvPbBudget.text = budget.budMoney
+            binding.tvMoney.text = NumberFormatter.formatNumber(budget.budMoney)
             expenseViewModel.calculate(budget.budCategory, dateFormat.format(budget.budMonth)) {
                 val progressValue = (it.toFloat() / budget.budMoney.toFloat() * 100).toInt()
                 binding.pbBudget.progress = progressValue
                 binding.pbBudget.show()
                 binding.tvPbPercent.text = String.format("%d%%", progressValue)
-                binding.tvPbMoney.text = it.toString()
+                binding.tvPbMoney.text = NumberFormatter.formatNumber(it.toString())
+                binding.tvPbBudget.text = NumberFormatter.formatNumber((budget.budMoney.toInt() - it).toString())
+
             }
             binding.root.setOnClickListener{
                 itemClickListener?.onItemClick(budget)

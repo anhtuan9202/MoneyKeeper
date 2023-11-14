@@ -43,5 +43,9 @@ class ExpenseRepositoryImpl @Inject constructor(
         return dao.delete(expense)
     }
 
+    override fun exportExcel() {
+        TODO("Not yet implemented")
+    }
+
 
 }

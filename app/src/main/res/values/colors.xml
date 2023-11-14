@@ -7,6 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_color">#F0F0F0</color>
+    <color name= "grey">#CCCCCC</color>
+    <color name= "title_color">#808080</color>
+
     <color name="transparent">#00FFCC00</color>
 <!--    <color name="transparent">#00FFC00</color>-->
     <color name="bnv_background">#FAFAFA</color>

@@ -12,7 +12,7 @@ import com.example.moneykeeper.databinding.ItemWalletImageBinding
 
 import com.example.moneykeeper.presenter.interfaces.OnItemClickListener
 
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
 
 import javax.inject.Inject
 

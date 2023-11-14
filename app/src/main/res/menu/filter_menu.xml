@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/day"
-        android:title="Ngày" />
+        android:title="@string/menu_day" />
 
     <item
         android:id="@+id/month"
-        android:title="Tháng" />
+        android:title="@string/menu_month" />
     <item
         android:id="@+id/year"
-        android:title="Năm" />
+        android:title="@string/menu_year" />
     <item
         android:id="@+id/all"
-        android:title="Tất cả" />
+        android:title="@string/menu_all" />
 
 
 </menu>

@@ -1,8 +1,9 @@
 package com.example.moneykeeper.presenter.budget.view
 
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moneykeeper.R
@@ -12,10 +13,12 @@ import com.example.moneykeeper.domain.model.Expense
 import com.example.moneykeeper.presenter.expense.adapter.ExpenseAdapter
 import com.example.moneykeeper.presenter.base.BaseFragment
 import com.example.moneykeeper.presenter.budget.viewmodel.BudgetViewModel
-import com.example.moneykeeper.presenter.viewmodel.CategoryViewModel
+import com.example.moneykeeper.presenter.category.viewmodel.CategoryViewModel
 import com.example.moneykeeper.presenter.expense.viewmodel.ExpenseViewModel
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -91,13 +94,13 @@ class DetailBudgetFragment : BaseFragment<FragmentDetailBudgetBinding>(){
 
     private fun handleDelete() {
         budgetViewModel.deleteBudget(budget)
-        notify("Xóa thành công")
+        notify(getString(R.string.dele_success))
         callback.backToPrevious()
     }
     override fun onResume() {
         super.onResume()
-        activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)?.visibility = View.INVISIBLE
-        activity?.findViewById<FloatingActionButton>(R.id.fAB)?.visibility = View.INVISIBLE
+        activity?.findViewById<ConstraintLayout>(R.id.clayout)?.visibility = View.INVISIBLE
+        activity?.findViewById<AdView>(R.id.adView)?.visibility = View.INVISIBLE
     }
 
 

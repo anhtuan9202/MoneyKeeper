@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="theme_dark" >
+        <attr name="background_color" format="color"/>
+        <attr name="toolbar_color" format="color"/>
+        <attr name="border_color" format="color"/>
+        <attr name="border_color_second" format="color"/>
+        <attr name="text_color" format="color"/>
+
+
+    </declare-styleable>
+</resources>

@@ -1,7 +1,95 @@
 <resources>
-    <string name="app_name">MoneyKeeper</string>
+    <string name="app_name">Money Keeper: Quản lý chi tiêu</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_title">Trang chủ</string>
+    <string name="home_total_balance">Tổng số dư tài khoản</string>
+    <string name="home_chart_title">Tình hình thu chi năm nay</string>
+    <string name="home_wallet_title">Ví của tôi</string>
+    <string name="home_transaction_title">Giao dịch gần đây</string>
+    <string name="home_budget_title">Ngân sách gần đây</string>
+    <string name="menu_transactions">Giao dịch</string>
+    <string name="menu_budgets">Ngân sách</string>
+    <string name="menu_settings">Cài đặt</string>
+    <string name="menu_home">Trang chủ</string>
+    <string name="menu_day">Ngày</string>
+    <string name="menu_month">Tháng</string>
+    <string name="menu_year">Năm</string>
+    <string name="menu_all">Tất cả</string>
+    <string name="item_wallet_name">Tên Ví tiền</string>
+    <string name="wallet_name">Ví tiền</string>
+    <string name="add_wallet_title">Thêm ví tiền</string>
+    <string name="add_wallet_init_amount">Số tiền ban đầu</string>
+    <string name="add_wallet_choose_image">Chọn biểu tượng</string>
+    <string name="save">Lưu</string>
+    <string name="intraday_transactions">Giao dịch trong ngày</string>
+    <string name="expense_chart_title">Biểu đồ thống kê chi tiêu trong ngày</string>
+    <string name="revenue_chart_title">Biểu đồ thống kê thu nhập trong ngày</string>
+    <string name="total_revenue">Tổng thu:</string>
+    <string name="total_expense">Tổng chi:</string>
+    <string name="add_transaction_money">Số tiền</string>
+    <string name="add_transaction_wallet">Ví tiền</string>
+    <string name="add_trans_category_name">Tên danh mục</string>
+    <string name="add_trans_category_type">Loại danh mục</string>
+    <string name="add_trans_note">Ghi chú</string>
+    <string name="no_data">Không có dữ liệu</string>
+    <string name="no_trans">Bạn chưa có giao dịch nào</string>
+    <string name="no_budget">Bạn chưa có ngân sách nào</string>
+    <string name="budget_title">Ngân sách</string>
+    <string name="budget_actual_expe">Thực tế chi:</string>
+    <string name="add_budget_title">Tạo ngân sách</string>
+    <string name="add_budget_money">Số tiền:</string>
+    <string name="add_budget_expe_for">Chi cho</string>
+    <string name="budget_detail">Chi tiết ngân sách</string>
+    <string name="budget_list">Danh sách giao dịch</string>
+    <string name="delete">Xóa</string>
+    <string name="update">Cập nhật</string>
+    <string name="setting">Cài đặt</string>
+    <string name="setting_category">Nhóm danh mục</string>
+    <string name="setting_wallet">Ví tiền</string>
+    <string name="setting_interface">Giao diện</string>
+    <string name="setting_language">Ngôn ngữ</string>
+    <string name="setting_notification">Thông báo</string>
+    <string name="setting_export_excel">Xuất file excel</string>
+    <string name="setting_export_csv">Xuất file CSV</string>
+    <string name="setting_password">Mật khẩu</string>
+    <string name="all_tran">Tất cả giao dịch</string>
+    <string name="expe_all_chart">"Biểu đồ thống kê tất cả chi tiêu "</string>
+    <string name="reve_all_chart">Biểu đồ thống kê tất cả thu nhập</string>
+    <string name="trans_day">Giao dịch trong ngày</string>
+    <string name="expe_day_chart">"Biểu đồ thống kê chi tiêu trong ngày "</string>
+    <string name="reve_day_chart">Biểu đồ thống kê thu nhập trong ngày</string>
+    <string name="trans_year">Giao dịch trong năm</string>
+    <string name="expe_year_chart">"Biểu đồ thống kê chi tiêu trong năm "</string>
+    <string name="reve_year_chart">Biểu đồ thống kê thu nhập trong năm</string>
+    <string name="trans_month">Giao dịch trong tháng</string>
+    <string name="expe_month_chart">"Biểu đồ thống kê chi tiêu trong tháng "</string>
+    <string name="reve_month_chart">"Biểu đồ thống kê thu nhập trong tháng "</string>
+    <string name="money_blank">Số tiền không được để trống!</string>
+    <string name="revenue">Khoản thu</string>
+    <string name="add_revenue">Thêm khoản thu</string>
+    <string name="update_reve">Sửa khoản thu</string>
+    <string name="expense">Khoản chi</string>
+    <string name="add_expense">Thêm khoản chi</string>
+    <string name="update_expense">Sửa khoản chi</string>
+    <string name="delete_success">Xóa thành công</string>
+    <string name="category_blank">Phải có ít nhất một danh mục</string>
+    <string name="icon_blank">Bạn chưa chọn biểu tượng</string>
+    <string name="icon_name_blank">Bạn chưa nhập tên danh mục</string>
+    <string name="add_success">Thêm danh mục thành công</string>
+    <string name="blank_money">Số tiền không được để trống!</string>
+    <string name="blank_cate">Bạn chưa chọn danh mục!</string>
+    <string name="update_sucess">Cập nhật ngân sách thành công!</string>
+    <string name="budget_exists">Ngân sách đã có, vui lòng sử dụng tính năng cập nhật!</string>
+    <string name="add_succes">Thêm ngân sách thành công!</string>
+    <string name="dele_success">Xóa thành công</string>
+    <string name="wallet_name_blank">Tên ví tiền không được để trống!</string>
+    <string name="amount_blank">Số tiền không được để trống!</string>
+    <string name="add_wallet_succ">Thêm ví tiền thành công!</string>
+    <string name="update_wallet_succ">Sửa ví tiền thành công</string>
+    <string name="delet_suc">Xóa thành công</string>
+    <string name="wal_blank">Phải có ít nhất một ví tiền</string>
+
+
     <string-array name="img_wallet">
         <item>wallet_cash</item>
         <item>wallet_bank</item>
@@ -52,4 +140,14 @@
         <item>cat_bitcoin</item>
         <item>cat_hospital</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="notifi_remember">Nhắc nhở hàng ngày</string>
+    <string name="set_notification">Đã đặt nhắc nhở hàng ngày!</string>
+    <string name="unset_notifi">Hủy đặt nhắc nhở hàng ngày!</string>
+    <string name="noti_title">Hãy ghi chép chi tiêu ngay bây giờ!</string>
+    <string name="noti_conent">Hãy ghi lại chi tiêu của bạn để theo dõi tài chính của bạn.</string>
+    <string name="permission_fail">Yêu cầu quyền truy cập bộ nhớ ngoài!</string>
+    <string name="export_fail">Xuất file không thành công</string>
+    <string name="export_succ">Xuất file thành công</string>
+    <string name="feature_update">Tính năng đang phát triển</string>
 </resources>

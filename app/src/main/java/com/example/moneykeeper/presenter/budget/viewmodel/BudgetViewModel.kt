@@ -17,11 +17,17 @@ class BudgetViewModel @Inject constructor(
     private val budgetUseCases: BudgetUseCases
 ) : ViewModel(){
     val budgetsLiveData = MutableLiveData<List<Budget>>()
+    val budget5LiveData = MutableLiveData<List<Budget>>()
     val budgetsMonthYearLiveData = MutableLiveData<List<Budget>>()
 
     fun getBudgets() = viewModelScope.launch(Dispatchers.IO) {
         budgetUseCases.getBudgets().collect{
             budgetsLiveData.postValue(it)
+        }
+    }
+    fun get5Budget() = viewModelScope.launch(Dispatchers.IO) {
+        budgetUseCases.get5Budget().collect{
+            budget5LiveData.postValue(it)
         }
     }
     fun getBudgetForMonthAndYear(monthYear: String) = viewModelScope.launch(Dispatchers.IO) {

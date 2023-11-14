@@ -1,102 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presenter.FragmentHome">
+    android:background="?attr/background_color">
 
-
-    <LinearLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tbHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/background_toolbar"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:layout_marginTop="24dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="?attr/text_color"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbHome"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_edittext"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:orientation="vertical">
 
-            <TextView
+            <RelativeLayout
+                android:id="@+id/layoutAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Tình hình thu chi năm nay"/>
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/lcStatistical"
-                android:background="@drawable/background_edittext"
-                android:layout_width="match_parent"
-                android:layout_margin="5dp"
-                android:layout_height="250dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_edittext"
-            android:orientation="vertical"
-            android:padding="5dp">
+                android:layout_margin="10dp"
+                android:background="@drawable/background_radius"
+                android:padding="10dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvTitleAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_total_balance"
+                    android:textColor="?attr/text_color"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/tvAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitleAmount"
+                    android:text="100000"
+                    android:textColor="?attr/text_color"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitleAmount"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@id/tvAmount"
+                    android:text="VND"
+                    android:textColor="?attr/text_color"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <TextView
+                android:id="@+id/tvChart"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="Các tài khoản" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/home_chart_title"
+                android:textColor="@color/title_color"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/layoutAmount" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvWallet"
+            <LinearLayout
+                android:id="@+id/layoutChart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_radius"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvChart">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_edittext"
-            android:orientation="vertical"
-            android:padding="5dp">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        android:id="@+id/tvEmptyChart"
+                        layout="@layout/empty_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lcStatistical"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_margin="5dp" />
+                </FrameLayout>
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tvWallet"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="5 giao dịch gần nhất" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/home_wallet_title"
+                android:textColor="@color/title_color"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/layoutChart" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvExpense5"
+            <LinearLayout
+                android:id="@+id/layoutWallet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/background_edittext"
-            android:orientation="vertical"
-            android:padding="5dp">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_radius"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvWallet">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvWallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tvExpense"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="Ngân sách" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/home_transaction_title"
+                android:textColor="@color/title_color"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/layoutWallet" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBudget"
+            <LinearLayout
+                android:id="@+id/layoutExpense"
                 android:layout_width="match_parent"
-                android:layout_height="400dp" />
-        </LinearLayout>
-    </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_radius"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvExpense">
 
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        android:id="@+id/tvEmptyExpense"
+                        layout="@layout/empty_expense_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvExpense5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvBudget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/home_budget_title"
+                android:textColor="@color/title_color"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/layoutExpense" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_radius"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBudget">
 
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <include
+                        android:id="@+id/tvEmptyBudget"
+                        layout="@layout/empty_budget_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
 
-
-</ScrollView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBudget"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp" />
+                </FrameLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

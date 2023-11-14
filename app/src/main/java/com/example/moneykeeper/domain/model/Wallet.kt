@@ -3,7 +3,7 @@ package com.example.moneykeeper.domain.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.moneykeeper.utils.Constants
+import com.example.moneykeeper.presenter.utils.Constants
 
 @Entity(tableName = Constants.WALLET)
 data class Wallet(

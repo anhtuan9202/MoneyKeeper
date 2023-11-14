@@ -2,7 +2,7 @@ package com.example.moneykeeper.data.local
 
 import androidx.room.*
 import com.example.moneykeeper.domain.model.Wallet
-import com.example.moneykeeper.utils.Constants
+import com.example.moneykeeper.presenter.utils.Constants
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -5,20 +5,24 @@ import android.icu.util.Calendar
 import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.NumberPicker
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.activityViewModels
 import com.example.moneykeeper.R
 import com.example.moneykeeper.databinding.FragmentAddBudgetBinding
 import com.example.moneykeeper.domain.model.Budget
 import com.example.moneykeeper.domain.model.Category
-import com.example.moneykeeper.domain.model.Expense
-import com.example.moneykeeper.presenter.ChooseCategoryFragment
+import com.example.moneykeeper.presenter.category.view.ChooseCategoryFragment
 import com.example.moneykeeper.presenter.base.BaseFragment
 import com.example.moneykeeper.presenter.budget.viewmodel.BudgetViewModel
 import com.example.moneykeeper.presenter.interfaces.ChooseCategoryListener
-import com.example.moneykeeper.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.ResourceUtils.getDrawableResourceId
+import com.example.moneykeeper.presenter.utils.TextChanged
+import com.google.android.gms.ads.AdView
 import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DateFormatSymbols
@@ -81,6 +85,7 @@ class AddBudgetFragment : BaseFragment<FragmentAddBudgetBinding>() {
 
         formattedDate = dateFormat.format(calendar.time)
         binding.tvBudgetDate.text = formattedDate
+        binding.etBudgetMoney.addTextChangedListener(TextChanged.onTextChangedListener(binding.etBudgetMoney))
 
     }
     private fun getDefaultDate(): Date {
@@ -88,9 +93,13 @@ class AddBudgetFragment : BaseFragment<FragmentAddBudgetBinding>() {
     }
 
     private fun handleSave() {
-        val money = binding.etBudgetMoney.text.toString().trim()
+        val money = binding.etBudgetMoney.text.toString().trim().replace(",", "")
         if (TextUtils.isEmpty(money)) {
-            binding.etBudgetMoney.error = "Số tiền không được để trống!"
+            binding.etBudgetMoney.error = getString(R.string.blank_money)
+            return
+        }
+        if(!::category.isInitialized){
+            notify(getString(R.string.blank_cate))
             return
         }
         val selectedDate = budgetMonth ?: getDefaultDate()
@@ -99,7 +108,7 @@ class AddBudgetFragment : BaseFragment<FragmentAddBudgetBinding>() {
         if(isEdit){
             val budget = Budget(budId = (data as Budget).budId, budMoney = money, budCategory = (data as Budget).budCategory, budMonth = selectedDate)
             budgetViewModel.updateBudget(budget)
-            notify("Cập nhật ngân sách thành công!")
+            notify(getString(R.string.update_sucess))
             requireActivity().supportFragmentManager.popBackStack()
         }
         else{
@@ -113,13 +122,13 @@ class AddBudgetFragment : BaseFragment<FragmentAddBudgetBinding>() {
                 }
             }
             if(conflict){
-                notify("Ngân sách đã có, vui lòng sử dụng tính năng cập nhật!")
+                notify(getString(R.string.budget_exists))
                 return
 
             }
             val budget = Budget(budMoney = money, budCategory = if (::category.isInitialized) category.cateId else 1,  budMonth = selectedDate )
             budgetViewModel.insertBudget(budget)
-            notify("Thêm ngân sách thành công!")
+            notify(getString(R.string.add_succes))
             requireActivity().supportFragmentManager.popBackStack()
         }
 
@@ -177,8 +186,10 @@ class AddBudgetFragment : BaseFragment<FragmentAddBudgetBinding>() {
 
     override fun onResume() {
         super.onResume()
-        activity?.findViewById<BottomAppBar>(R.id.bottomAppBar)?.visibility = View.INVISIBLE
-        activity?.findViewById<FloatingActionButton>(R.id.fAB)?.visibility = View.INVISIBLE
+        activity?.findViewById<ConstraintLayout>(R.id.clayout)?.visibility = View.INVISIBLE
+        activity?.findViewById<AdView>(R.id.adView)?.visibility = View.INVISIBLE
+
+
     }
 
 

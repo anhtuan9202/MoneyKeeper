@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="?attr/background_color">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tbCategory"
-        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@drawable/background_toolbar">
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="24dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Danh mục"
-                android:textColor="@color/black"
+                android:textColor="?attr/text_color"
                 android:textSize="20sp"
                 android:textStyle="bold" />
             <ImageView
@@ -44,48 +45,52 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"/>
+                android:src="@drawable/ic_delete"
+                app:tint="?attr/text_color" />
 
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-                android:layout_marginTop="20dp"
-                android:id="@+id/tgbCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="25dp"
-                app:singleSelection="true"
-                android:orientation="horizontal"
-                android:weightSum="2">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnRevenue"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="#5DB075"
-                    android:text="Thu"
-                    android:textColor="@color/white"
-                    android:elevation="-15dp"
-                    android:textAllCaps="false" />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnExpense"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:text="Chi"
-                    android:elevation="10dp"
-                    android:textColor="@color/black"
-                    android:textAllCaps="false" />
-            </com.google.android.material.button.MaterialButtonToggleGroup>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.MaterialToolbar>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:layout_below="@id/tbCategory"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tgbCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        app:singleSelection="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRevenue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="#5DB075"
+            android:text="Thu"
+            android:textColor="@color/white"
+            android:elevation="-15dp"
+            android:textAllCaps="false" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnExpense"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:text="Chi"
+            android:elevation="10dp"
+            android:textColor="@color/black"
+            android:textAllCaps="false" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lnCategory"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tbCategory"
-        android:orientation="vertical"
-        android:background="@drawable/background_radius" >
+        android:layout_below="@id/tgbCategory"
+        android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/rvCategory"

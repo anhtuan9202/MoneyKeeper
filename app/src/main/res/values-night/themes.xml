@@ -12,5 +12,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="background_color">#000000</item>
+        <item name="border_color">#111111</item>
+        <item name="border_color_second">#111111</item>
+        <item name="toolbar_color">#222222</item>
+        <item name="text_color">#FFFFFF</item>
     </style>
 </resources>

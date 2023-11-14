@@ -10,29 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/background_edittext"
-        android:padding="15dp"
-        android:layout_margin="15dp"
+        android:padding="@dimen/_15sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:orientation="vertical">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/_55sdp"
             android:backgroundTint="@color/button_cancel"
-            android:text="Xóa"
+            android:text="@string/delete"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:cornerRadius="8dp"
+            app:cornerRadius="@dimen/_8sdp"
             app:icon="@drawable/ic_delete"
             app:iconTint="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            app:cornerRadius="8dp"
+            android:layout_height="@dimen/_55sdp"
+            app:cornerRadius="@dimen/_8sdp"
             android:backgroundTint="@color/button_success"
-            android:text="Chỉnh sửa"
+            android:text="@string/update"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:icon="@drawable/ic_edit"

@@ -1,5 +1,6 @@
 package com.example.moneykeeper.di
 
+
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
@@ -15,6 +16,7 @@ import com.example.moneykeeper.domain.repository.WalletRepository
 import com.example.moneykeeper.domain.use_cases.*
 import com.example.moneykeeper.domain.use_cases.budget.BudgetUseCases
 import com.example.moneykeeper.domain.use_cases.budget.DeleteBudget
+import com.example.moneykeeper.domain.use_cases.budget.Get5Budget
 import com.example.moneykeeper.domain.use_cases.budget.GetBudgetForMonthAndYear
 import com.example.moneykeeper.domain.use_cases.budget.GetBudgets
 import com.example.moneykeeper.domain.use_cases.budget.InsertBudget
@@ -32,9 +34,9 @@ import com.example.moneykeeper.domain.use_cases.wallet.InsertWallet
 import com.example.moneykeeper.domain.use_cases.wallet.UpdateWallet
 import com.example.moneykeeper.domain.use_cases.wallet.WalletUseCases
 import com.example.moneykeeper.presenter.budget.adapter.BudgetAdapter
-import com.example.moneykeeper.presenter.CategoryAdapter
-import com.example.moneykeeper.presenter.CategoryImageAdapter
-import com.example.moneykeeper.presenter.viewmodel.CategoryViewModel
+import com.example.moneykeeper.presenter.category.adapter.CategoryAdapter
+import com.example.moneykeeper.presenter.category.adapter.CategoryImageAdapter
+import com.example.moneykeeper.presenter.category.viewmodel.CategoryViewModel
 import com.example.moneykeeper.presenter.expense.adapter.ExpenseAdapter
 import com.example.moneykeeper.presenter.wallet.adapter.WalletAdapter
 import com.example.moneykeeper.presenter.wallet.adapter.WalletImageAdapter
@@ -152,7 +154,8 @@ object MoneyKeeperModule {
             insertBudget = InsertBudget(repository),
             deleteBudget = DeleteBudget(repository),
             updateBudget = UpdateBudget(repository),
-            getBudgetForMonthAndYear = GetBudgetForMonthAndYear(repository)
+            getBudgetForMonthAndYear = GetBudgetForMonthAndYear(repository),
+            get5Budget = Get5Budget(repository)
         )
     }
 
@@ -226,5 +229,8 @@ object MoneyKeeperModule {
     ): CategoryImageAdapter {
         return CategoryImageAdapter(context)
     }
+
+
+
 
 }

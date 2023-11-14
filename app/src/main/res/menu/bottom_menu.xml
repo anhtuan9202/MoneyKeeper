@@ -4,23 +4,24 @@
     <item
         android:id="@+id/navHome"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Trang chủ" />
+        android:title="@string/menu_home" />
 
     <item
         android:id="@+id/navExpense"
-        android:icon="@drawable/ic_thuchi"
-        android:title="Giao dịch" />
+        android:icon="@drawable/ic_bottom_wallet"
+        android:title="@string/menu_transactions" />
     <item
         android:id="@+id/holder"
         android:title=""
         android:enabled="false" />
+
     <item
         android:id="@+id/navBudget"
-        android:icon="@drawable/ic_calendar"
-        android:title="Ngân sách" />
+        android:icon="@drawable/ic_bottom_budget"
+        android:title="@string/menu_budgets" />
     <item
         android:id="@+id/navSettings"
-        android:icon="@drawable/ic_setting"
-        android:title="Cài đặt" />
+        android:icon="@drawable/ic_bottom_setting"
+        android:title="@string/menu_settings" />
 
 </menu>
